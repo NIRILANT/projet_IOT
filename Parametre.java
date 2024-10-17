@@ -50,6 +50,7 @@ public class Parametre extends AppCompatActivity {
         EditText valeur_temperature = findViewById(R.id.valeur);
         String valeur_temperature_string = valeur_temperature.getText().toString();
         CheckBox chexck_email = findViewById(R.id.checkbox_email);
+        Integer valeur_temperature_int = Integer.parseInt(valeur_temperature_string);
 
 
         chexck_email.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -58,7 +59,7 @@ public class Parametre extends AppCompatActivity {
 
                 //envoyer l'email
 
-                Integer valeur_temperature_int = Integer.parseInt(valeur_temperature_string);
+
                 Email donnee = new Email(valeur_temperature_int, true);
 
                 if (chexck_email.isChecked()) {
@@ -75,16 +76,25 @@ public class Parametre extends AppCompatActivity {
                     }
                     //}else{
 
-              /*      donnee.envoyer_donnee(valeur_,true);
+                          /*      donnee.envoyer_donnee(valeur_,true);
 
-                    String message = "Vous n'avez pas cocher l'email";
-                    Integer durre = Toast.LENGTH_SHORT;
+                                String message = "Vous n'avez pas cocher l'email";
+                                Integer durre = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(Parametre.this,message,durre);
-                    toast.show();
-                    /**texteee***/
+                                Toast toast = Toast.makeText(Parametre.this,message,durre);
+                                toast.show();
+                                /**texteee***/
                 } else {
-                    chexck_email.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    if (valeur_temperature.getText() != null) {
+
+                        //click_envoyer(Integer.valueOf(valeur_temperature_int),true);
+                        donnee.envoyer_donnee(valeur_temperature_int, false);
+
+                    } else {
+                        TextView alerte = findViewById(R.id.alerte);
+                        alerte.setText("Entrer une valeur numerique");
+                    }
+                    /*chexck_email.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -111,10 +121,11 @@ public class Parametre extends AppCompatActivity {
 
                     });
 
+                }*/
                 }
             }
-
         });
+
     }
 }
 
@@ -165,6 +176,8 @@ public class Parametre extends AppCompatActivity {
             });
 
         }
-    }*/
+        }
+     */
+
 
 
